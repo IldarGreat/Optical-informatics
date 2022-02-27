@@ -62,10 +62,29 @@ hold off;
 
 #13
 plot(x,real(f))
-title("Действительная часть");
+title("Real");
 plot(x,imag(f))
-title("Мнимая часть");
+title("Imaginary");
 plot(x,abs(f))
-title("Амплитуда");
+title("Amplitude");
 plot(x,arg(f))
-title("Фаза");
+title("Phase");
+
+#14
+h=f.*exp(1i*x);
+plot(x,real(h))
+title("Real");
+plot(x,imag(h))
+title("Imaginary");
+plot(x,abs(h))
+title("Amplitude");
+plot(x,arg(h))
+title("Phase");
+
+#15
+F = (f.')*g;
+imagesc(real(F));
+g1=g(end/4:3*end/4);
+f1=f(end/4:3*end/4);
+F1=(f1.')*g1;
+imagesc(real(F1));
