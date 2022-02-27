@@ -11,36 +11,61 @@ x(end) = [];
 endif
 
 #5
-f = besselj(3,3*x);
+f = besselj(1,3*x);
 
 #6
 plot(x,f)
 xlabel("x");
-ylabel("bessel(x)");
+ylabel("bessel(3x)");
 
 #7
-f = besselj(3,6*x);
+f = besselj(1,2*(3*x));
 plot(x,f)
 xlabel("x");
-ylabel("bessel(x)");
-f = besselj(3,3*(x+5));
+ylabel("bessel(6x)");
+f = besselj(1,3*(x+5));
 plot(x,f)
 xlabel("x");
-ylabel("bessel(x)");
-f = besselj(3,3*x);
+ylabel("bessel(3(x+5))");
+f = besselj(1,3*x);
 
 #8
 plot(x(1:end/4),f(1:end/4))
-xlabel("x/4");
-ylabel("bessel(x)/4");
+xlabel("x");
+ylabel("bessel(3x)");
 title("Первая четверть интервалов");
 plot(x(end/4:3*end/4),f(end/4:3*end/4))
-xlabel("3*x/4");
-ylabel("3*bessel(x)/4");
+xlabel("x");
+ylabel("bessel(3x)");
 title("Середина графика");
 
 #9
-domain = x > 0 & x < 7
+domain = x > 0 & x < 7;
 plot(x(domain),f(domain));
 xlabel("x(domain)");
-ylabel("bessel");
+ylabel("bessel(3x)");
+
+#10
+g = cos(x);
+
+#11
+fplusg = f.+g;
+fmultig = f.*g;
+
+#12
+plot(x,f,"-;f(x);")
+hold on;
+plot(x,g,"-.;g(x);")
+plot(x(1: 30: end),fplusg(1: 30: end),"o;f(x)+g(x);")
+plot(x(1: 30: end),fmultig(1: 30: end),"v --;f(x)*g(x);")
+hold off;
+
+#13
+plot(x,real(f))
+title("Действительная часть");
+plot(x,imag(f))
+title("Мнимая часть");
+plot(x,abs(f))
+title("Амплитуда");
+plot(x,arg(f))
+title("Фаза");
