@@ -33,11 +33,11 @@ f = besselj(1,3*x);
 plot(x(1:end/4),f(1:end/4))
 xlabel("x");
 ylabel("bessel(3x)");
-title("Первая четверть интервалов");
+title("First quarter intervals");
 plot(x(end/4:3*end/4),f(end/4:3*end/4))
 xlabel("x");
 ylabel("bessel(3x)");
-title("Середина графика");
+title("Middle intervals");
 
 #9
 domain = x > 0 & x < 7;
@@ -110,3 +110,14 @@ imagesc(abs(H));
 title("Amplitude");
 imagesc(arg(H));
 title("Phase");
+
+#19
+s = H(end/2, :1);
+plot(real(s))
+title("Real");
+plot(imag(s))
+title("Imaginary");
+plot(abs(s))
+title("Amplitude");
+plot(arg(f))
+title("Phase")
