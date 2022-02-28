@@ -84,7 +84,29 @@ title("Phase");
 #15
 F = (f.')*g;
 imagesc(real(F));
-g1=g(end/4:3*end/4);
-f1=f(end/4:3*end/4);
-F1=(f1.')*g1;
+g1 = g(end/4:3*end/4);
+f1 = f(end/4:3*end/4);
+F1 = (f1.')*g1;
 imagesc(real(F1));
+
+#16
+y=x;
+[X,Y] = meshgrid(x,y);
+[F2,G2] = meshgrid(f,g);
+G=Y.*F2+X.*G2;
+imagesc(real(G));
+
+#17
+R = sqrt(X.^2 + Y.^2);
+FI = atan2(Y,X);
+
+#18
+H = f.*exp(1i.*(-5).*FI);
+imagesc(real(H));
+title("Real");
+imagesc(imag(H));
+title("Imaginary");
+imagesc(abs(H));
+title("Amplitude");
+imagesc(arg(H));
+title("Phase");
